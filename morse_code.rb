@@ -11,3 +11,14 @@ def decode_char(code_char)
 end
 
 puts decode_char('--..')
+
+def decode_word(code_word)
+  morse_word = code_word.split
+  result = ''
+  morse_word.each do |char|
+    result += decode_char(char)
+  end
+  result
+end
+
+puts decode_word("-- -.--")
