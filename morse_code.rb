@@ -10,15 +10,26 @@ def decode_char(code_char)
   alphabeth[index]
 end
 
-puts decode_char('--..')
-
 def decode_word(code_word)
   morse_word = code_word.split
   result = ''
   morse_word.each do |char|
-    result += decode_char(char)
+    result += if char == '/'
+                ' '
+              else
+                decode_char(char)
+              end
   end
   result
 end
 
-puts decode_word("-- -.--")
+def decode_sentence(sentence)
+  morse_sentence = sentence.split('   ')
+  result = ''
+  morse_sentence.each do |word|
+    result += "#{decode_word(word)} "
+  end
+  result
+end
+
+puts decode_sentence('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
